@@ -2,12 +2,18 @@ About
 ===
 
 **[WebViewReloader](https://github.com/davidegironi/webviewreloader)** is an app that loads and reload a WebView in full screen.
+
 Built using **[React Native](https://facebook.github.io/react-native/)**
 
 ## Build & Debug
 
-Android Debug: yarn android
-Android Release: yarn androidrelease
+Android debug: yarn android
+
+Android release: yarn androidrelease
+
+iOS debug: yarn ios
+
+iOS release: yarn iosrelease
 
 ## Development
 
