@@ -1,0 +1,29 @@
+{
+  "name": "WebViewReloader",
+  "version": "0.1.2",
+  "description": "A WebView Reloader",
+  "author": {
+    "name" : "Davide Gironi",
+    "url" : "http://davidegironi.it"
+  },
+  "license": "GPL-3.0",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/davidegironi/webviewreloader"
+  },
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "androidrelease": "cd android && ./gradlew assembleRelease",
+    "ios": "ENVFILE=.env.debug react-native run-ios",
+    "iosrelease": "ENVFILE=.env.release react-native run-ios --configuration Release"
+  },
+  "dependencies": {
+    "moment": "^2.18.1",
+    "react": "16.0.0-alpha.12",
+    "react-native": "^0.47.0",
+    "react-native-config": "^0.6.0",
+    "react-native-keep-awake": "^2.0.5",
+    "validate.js": "^0.11.1"
+  }
+}
