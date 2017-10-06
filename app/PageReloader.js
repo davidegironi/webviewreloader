@@ -16,7 +16,8 @@ export class PageReloader extends React.Component {
     this.state = {
       setIntervalId: null,
       seconds: 0,
-      reloadTimeDisabled: 0
+      reloadTimeDisabled: 0,
+      heartBeat: false
     };
   }
 
@@ -30,7 +31,8 @@ export class PageReloader extends React.Component {
     var setIntervalId = setInterval(() => {
         this.setState({
           seconds: (this.state.reloadSeconds != 0 ? this.state.seconds + 1 : this.state.seconds),
-          reloadTimeDisabled: (this.state.reloadTimeDisabled > 0 ? this.state.reloadTimeDisabled - 1 : 0)
+          reloadTimeDisabled: (this.state.reloadTimeDisabled > 0 ? this.state.reloadTimeDisabled - 1 : 0),
+          heartBeat: !this.state.heartBeat
         });
       }, 1000);
     this.setState({
@@ -83,7 +85,7 @@ export class PageReloader extends React.Component {
         {Config.SHOW_RELOADER == "true" ?
           <View style={{backgroundColor: 'skyblue'}}>
             <Text>
-              {this.state.seconds.toString()}
+              {this.state.seconds.toString()}{Config.SHOW_HEARTBEAT == "true" && this.state.heartBeat ? " _" : null}
             </Text>
           </View>
           :
@@ -94,9 +96,14 @@ export class PageReloader extends React.Component {
           <WebView
             ref={WEBVIEW_REF}
             source={{uri: this.state.webUrl}}
-            style={{flex: 1}}
+            style={{flex: 1, zIndex: 0}}
           />
           : null }
+          {Config.SHOW_HEARTBEAT == "true" ?
+          <Text style={{zIndex: 1, position: "absolute", bottom: 0, right: 0, paddingRight: 5}}>
+             {this.state.heartBeat ? "." : ""}
+          </Text>
+          : null}
         </View>
       </View>
     );
